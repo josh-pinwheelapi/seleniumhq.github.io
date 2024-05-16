@@ -1,3 +1,4 @@
+import logging
 import os
 
 from selenium import webdriver
@@ -7,6 +8,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 
 def test_start_remote(server):
+    logger = logging.getLogger('selenium')
+    logger.setLevel(logging.DEBUG)
     options = webdriver.ChromeOptions()
     driver = webdriver.Remote(command_executor=server, options=options)
 
@@ -15,6 +18,8 @@ def test_start_remote(server):
 
 
 def test_uploads(server):
+    logger = logging.getLogger('selenium')
+    logger.setLevel(logging.DEBUG)
     options = webdriver.ChromeOptions()
     driver = webdriver.Remote(command_executor=server, options=options)
 
@@ -34,6 +39,8 @@ def test_uploads(server):
 
 
 def test_downloads(server, temp_dir):
+    logger = logging.getLogger('selenium')
+    logger.setLevel(logging.DEBUG)
     options = webdriver.ChromeOptions()
     options.enable_downloads = True
     driver = webdriver.Remote(command_executor=server, options=options)
